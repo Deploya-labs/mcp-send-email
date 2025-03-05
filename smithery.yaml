@@ -1,0 +1,27 @@
+# Smithery configuration file: https://smithery.ai/docs/config#smitheryyaml
+
+startCommand:
+  type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    required:
+      - key
+    properties:
+      key:
+        type: string
+        description: Resend API Key
+      sender:
+        type: string
+        description: Optional sender email address
+      replyTo:
+        type: string
+        description: Optional reply-to email addresses (comma separated)
+  commandFunction:
+    # A JS function that produces the CLI command based on the given config to start the MCP on stdio.
+    |-
+    (config) => { const args = ["build/index.js", "--key=" + config.key]; if(config.sender){ args.push("--sender=" + config.sender); } if(config.replyTo){ args.push("--reply-to=" + config.replyTo); } return { command: 'node', args }; }
+  exampleConfig:
+    key: your_resend_api_key
+    sender: sender@example.com
+    replyTo: reply1@example.com,reply2@example.com
