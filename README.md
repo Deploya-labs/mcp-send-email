@@ -52,6 +52,14 @@ Same set up as above, and then add the following MCP config
 }
 ```
 
+### Installing via Smithery
+
+To install mcp-send-email for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@ykhli/mcp-send-email):
+
+```bash
+npx -y @smithery/cli install @ykhli/mcp-send-email --client claude
+```
+
 **Develop**
 
 `npm install`
